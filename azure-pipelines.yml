@@ -1,0 +1,32 @@
+
+
+trigger:
+- main
+
+pool:
+  name: zhaoxiaotong
+
+steps:
+- checkout: self
+  clean: true
+- script: |
+   echo git checkout main
+   git checkout main
+   
+   echo git branch
+   git branch -a
+   
+   echo git change remote
+   git remote set-url origin  https://github.com/XiaotongZhao/JustLearn.git
+   
+   echo git config username and password
+   git config user.name "Xiaotong.Zhao"
+   git config user.email "callmetongge@outlook.com"
+   
+   echo git push
+   git push https://$(Common.pat-token)@github.com/XiaotongZhao/JustLearn.git
+   
+   
+   
+  displayName: 'Sync repository to Github'
+
